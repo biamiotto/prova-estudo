@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Comida {
+  id        Int      @id @default(autoincrement())
+  nome      String   @unique
+  tipo      String
+  preco     Float
+  descricao String
+  criadoEm  DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  @@map("comidas")
+}

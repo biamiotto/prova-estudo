@@ -1,0 +1,23 @@
+{
+  "name": "db-comidas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "SENAI",
+    "prova"
+  ],
+  "author": "Beatriz Miotto",
+  "license": "MIT",
+  "description": "Estudando pra prova",
+  "dependencies": {
+    "@prisma/client": "^6.18.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}

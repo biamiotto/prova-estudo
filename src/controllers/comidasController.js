@@ -1,21 +1,21 @@
-import * as ComidaModel from './../models/comidasModel.js'
+import * as ComidasControllers from './../models/comidasModel.js'
 
 export const listarTodos = async (req, res) => {
     try {
-        const comidas = await ComidaModel.encontreTodos();
+        const comida = await ComidasControllers.encontreTodos();
 
-        if(!comidas || comidas.length === 0){
+        if(!comida || comida.length === 0){
             res.status(404).json({
-                total: comidas.length,
+                total: 0,
                 mensagem: 'Não há comidas na lista',
-                comidas
+                comida
             })
         }
 
         res.status(200).json({
-            total: comidas.length,
+            total: comida.length,
             mensagem: 'Lista de comidas',
-            comidas
+            comida
         })
     } catch (error) {
         res.status(500).json({
@@ -29,7 +29,7 @@ export const listarTodos = async (req, res) => {
 export const listarUm = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
-        const comida = await ComidaModel.encontreUm(id);
+        const comida = await ComidasControllers.encontreUm(id);
 
         if(!comida){
             return res.status(404).json({
@@ -59,7 +59,7 @@ export const criar = async (req, res) => {
         
         const dado = { nome, tipo, preco, descricao }
 
-    const novaComida = await ComidaModel.criar(req.body)
+    const novaComida = await ComidasControllers.criar(req.body)
     
     res.status(201).json({
         mensagem: 'Comida criado com sucesso!',
@@ -78,7 +78,7 @@ export const deletar = async (req, res) => {
     try {
         const id = parseInt(req.params.id)
 
-        const comidaExiste = await ComidaModel.encontreUm(id);
+        const comidaExiste = await ComidasControllers.encontreUm(id);
 
         if(!comidaExiste){
             return res.status(404).json({
@@ -87,7 +87,7 @@ export const deletar = async (req, res) => {
             })
         }
 
-        await ComidaModel.deletar(id)
+        await ComidasControllers.deletar(id)
 
         res.status(200).json({
             message: 'Comida apagado com sucesso',
@@ -109,7 +109,7 @@ export const atualizar = async (req, res) => {
     const id = parseInt(req.params.id);
     const dados = req.body;
 
-    const comidaExiste = await ComidaModel.encontreUm(id);
+    const comidaExiste = await ComidasControllers.encontreUm(id);
 
     if(!comidaExiste) {
         return res.status(404).json({
@@ -118,7 +118,7 @@ export const atualizar = async (req, res) => {
         })
     }
 
-    const comidaAtualizado = await ComidaModel.atualizar(id, dados)
+    const comidaAtualizado = await ComidasControllers.atualizar(id, dados)
 
     return res.status(200).json({
         mensagem: 'Comida atualizada com sucesso!',

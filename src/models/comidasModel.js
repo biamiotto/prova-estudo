@@ -3,19 +3,19 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export const encontreTodos = async () => {
-    return await prisma.comidas.findMany({
+    return await prisma.comida.findMany({
         orderBy: { id: 'asc' }
     });
 }
 
 export const encontreUm = async (id) => {
-    return await prisma.comidas.findUnique({
+    return await prisma.comida.findUnique({
         where: { id: Number(id) }
     })
 }
 
 export const criar = async (dado) => {
-    return await prisma.comidas.create({
+    return await prisma.comida.create({
         data: {
             nome: dado.nome,
             tipo: dado.tipo,
@@ -26,13 +26,13 @@ export const criar = async (dado) => {
 }
 
 export const deletar = async (id) => {
-    return await prisma.comidas.delete({
+    return await prisma.comida.delete({
         where: { id: Number(id) }
     })
 }
 
 export const atualizar = async (id, dado) => {
-    return await prisma.comidas.update({
+    return await prisma.comida.update({
         where: { id: Number(id) },
         data: {
             ...(dado.nome && { nome: dado.nome }),

@@ -20,9 +20,13 @@ app.listen(serverPort, () => {
 });
 
 
-
-
-
+/* fltro exemplo 
+if (categoria) {
+        resultado = resultado.filter(fanfics => 
+            fanfics.categoria.toLowerCase().includes(categoria.toLowerCase())
+        );
+    }
+/*
 
 
 /* 

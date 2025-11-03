@@ -73,5 +73,7 @@ model Comida {
   npx prisma generate
 - Abrir interface visual (opcional):
   npx prisma studio
+- Inserir as comidas
+npx prisma db seed
 
 */

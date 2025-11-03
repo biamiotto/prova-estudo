@@ -5,9 +5,9 @@ const prisma = new PrismaClient()
 async function main() {
   console.log('🌱 Inserindo comidas no banco...')
 
-  await prisma.comidas.deleteMany()
+  await prisma.comida.deleteMany()
 
-  await prisma.comidas.createMany({
+  await prisma.comida.createMany({
     data: [
       {
         nome: "Arroz branco",
